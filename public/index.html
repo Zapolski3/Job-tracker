@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Jobs application status</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+       <!-- Moment.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='js/main.js'></script>
+
+    <style type="text/css">
+        body {
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>This app will tell if you have applied to the job before</h1>
+        <div class="row justify-content-between">
+            <div class ="col-5">
+            <img src ="./assets/glassdoor.png" width="500px" height="300px"/>
+        </div>
+        <div class ="col-5">
+            <img src ="assets/indeed.png" width="500px" height="300px"/>
+        </div>
+        </div>
+        <br />
+        <br />
+        <form role="form">
+            <div class="raw">
+
+                <div class="col-4">
+                    <label for="formGroupExampleInput"><b>Copy only highlighted part of name as shown in the pictures above</b></label>
+                    <input type="text" class="form-control" id="jobName" placeholder="Paste name of company">
+
+                </div>
+                <div class="col-auto">
+                    <button id="submitBtn" type="submit" class="btn btn-primary mb-2">Submit</button>
+                </div>
+            </div>
+
+        </form>
+       <div id="thx"></div>
+        <div id="seeAll">
+                <div class="col-auto mt-3">
+                       <a href="/see-all-db"><button id="seeAllDb" class="btn btn-primary mb-2">See All Jobs</button></a> 
+                    </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
