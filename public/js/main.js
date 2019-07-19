@@ -1,21 +1,42 @@
 // by clicking on submit,the code will add a new job and check if job doesn't exist in the db and 
 $(document).ready(function(){
 
-function ckeckName(valueOne){
-  $.ajax({ url: "/api/see-all-db", method: "GET" }).then(function(DB) {
+  //hides login field
+  var loginField = $("#loginField");
+  loginField.hide();
 
-      // Here we then log the DB to console, where it will show up as an object.
-      console.log(DB);
-      console.log("------------------------------------");
 
-      // Loop through and display each job
-      for (var i = 0; i < DB.length; i++) {
-        if(DB[i].name == valueOne){
-          break;
-        }
-      }
-    });
+// this function will hide Login and Sign-up buttons and deliver login fields
+function showLoginInfo (){
+  var LoginBtn = $("#firstLoginBtn");
+  LoginBtn.hide();
+
+  // var SignUp = $("#Sign-upBtn");
+  // SignUp.hide();
+
+  loginField.show();
 }
+
+$("#firstLoginBtn").on("click", function(){
+  showLoginInfo ();
+
+})
+// console.log("hello")
+// function ckeckName(valueOne){
+//   $.ajax({ url: "/api/see-all-db", method: "GET" }).then(function(DB) {
+
+//       // Here we then log the DB to console, where it will show up as an object.
+//       console.log(DB);
+//       console.log("------------------------------------");
+
+//       // Loop through and display each job
+//       for (var i = 0; i < DB.length; i++) {
+//         if(DB[i].name == valueOne){
+//           break;
+//         }
+//       }
+//     });
+// }
 
     
 

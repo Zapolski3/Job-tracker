@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-       <!-- Moment.js -->
+    <!-- Moment.js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -17,21 +17,39 @@
 
     <style type="text/css">
         body {
-            background-color: lightskyblue;
+            background-color: whitesmoke;
         }
     </style>
 </head>
 
 <body>
+    <nav class="navbar navbar-light bg-dark justify-content-between">
+        <a class="navbar-brand" href="/">
+            <img class="ml-3" src="./assets/notebook_logo.jpg" width="50" height="60" alt="">
+        </a>
+        <div class="d-flex justify-content-between">
+            <button id="firstLoginBtn" class="btn btn-outline-info my-2 my-sm-0" type="submit">Login</button>
+            <button id="Sign-upBtn" class="btn btn-outline-info my-2 my-sm-0 mr-2" type="submit">Sign-up</button>
+            <div id="loginField" class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Name and Password</span>
+                </div>
+                <input id="username" type="text" aria-label="First name" class="form-control">
+                <input id="password" type="text" aria-label="Last name" class="form-control">
+                <button class="btn btn-outline-info" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </nav>
     <div class="container">
+
         <h1>This app will tell if you have applied to the job before</h1>
         <div class="row justify-content-between">
-            <div class ="col-5">
-            <img src ="./assets/glassdoor.png" width="500px" height="300px"/>
-        </div>
-        <div class ="col-5">
-            <img src ="assets/indeed.png" width="500px" height="300px"/>
-        </div>
+            <div class="col-5">
+                <img src="./assets/glassdoor.png" width="500px" height="300px" />
+            </div>
+            <div class="col-5">
+                <img src="assets/indeed.png" width="500px" height="300px" />
+            </div>
         </div>
         <br />
         <br />
@@ -39,7 +57,8 @@
             <div class="raw">
 
                 <div class="col-4">
-                    <label for="formGroupExampleInput"><b>Copy only highlighted part of name as shown in the pictures above</b></label>
+                    <label for="formGroupExampleInput"><b>Copy only highlighted part of name as shown in the pictures
+                            above</b></label>
                     <input type="text" class="form-control" id="jobName" placeholder="Paste name of company">
 
                 </div>
@@ -49,11 +68,11 @@
             </div>
 
         </form>
-       <div id="thx"></div>
+        <div id="thx"></div>
         <div id="seeAll">
-                <div class="col-auto mt-3">
-                       <a href="/display/all"><button id="seeAllDb" class="btn btn-primary mb-2">See All Jobs</button></a> 
-                    </div>
+            <div class="col-auto mt-3">
+                <a href="/all"><button id="seeAllDb" class="btn btn-primary mb-2">See All Jobs</button></a>
+            </div>
         </div>
     </div>
 
