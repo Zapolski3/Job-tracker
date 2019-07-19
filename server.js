@@ -1,12 +1,10 @@
 // Dependencies
 // ===========================================================
 var express = require("express");
-
 var app = express();
-var PORT = 3000;
-
 var path = require("path");
-
+const PORT = process.env.PORT || 3003;
+var db = require("./models");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -16,63 +14,19 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // ===========================================================
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
-//connection to database 
-// Require mysql
-var mysql = require("mysql");
-
-// Set up our connection information
-var connection = mysql.createConnection({
-  port: 3306,
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "jobs_db"
-});
-
-// Connect to the database
-connection.connect(function (err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + connection.threadId);
-});
-//***************************************************************
-
-//this is an eccess to a temporaty db
-var db = require("./db/testdb");
 
 // Routes
 // ===========================================================
-app.get("/", function (req, res) {
-  //   res.sendFile("Welcome to the Star Wars Page!");
-  res.sendFile(path.join(__dirname, "./public/index.html"));
-});
 
-app.get("/see-all-db", function (req, res) {
-  res.sendFile(path.join(__dirname, "./public/see_all_items.html"));
-});
 
-// show all jobs
-app.get("/api/see-all-db", function (req, res) {
-  var dbQuery = "SELECT * FROM new_job";
 
-  connection.query(dbQuery, function (err, result) {
-    if (err) throw err;
-    // console.log(result);
-    res.json(result);
-  });
-});
 
-// add new job
-app.post("/api/new", function (req, res) {
-  console.log("New Job Data:");
-  console.log(req.body);
 
-  CkeckTheJob(req.body.name, req.body.date, res);
-  
-  });
+
+
 //=========================================
   function addToDB(req, date, res){
     var dbQuery = "INSERT INTO new_job (name, date) VALUES (?,?)";
@@ -120,6 +74,12 @@ app.post("/api/new", function (req, res) {
 
   // Listener
   // ===========================================================
-  app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
-  });
+  // app.listen(PORT, function () {
+  //   console.log("App listening on PORT " + PORT);
+  // });
+  db.sequelize.sync( {force: false} ).then(function() {
+    app.listen(PORT, () => {
+      console.log(`🌎 ==> API server now on port ${PORT}!`);
+    });
+  })
+  
